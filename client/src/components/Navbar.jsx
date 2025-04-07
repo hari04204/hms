@@ -50,7 +50,7 @@ const Navbar = () => {
             Login
           </Link>
           <Link
-            to="/register"
+            to="/register2"
             className="px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-700 transition shadow-md"
           >
             Register
