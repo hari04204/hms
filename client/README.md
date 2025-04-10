@@ -68,3 +68,61 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## React Hooks
+
+useState() -> data storage and retrieval  
+useEffect() -> state change in data  
+
+local storage -> without db using <code>JSON</code>  
+
+### useState
+
+```js
+import useState
+
+export default func x(props){  
+    const [age, setAge] = useState(19)  
+    setAge(age+1)
+}
+```
+
+### useEffect
+
+```javascript
+import { useState, useEffect } from "react";
+
+function HookCounterOne() {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
+
+    return (
+        <div>
+            <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+                Click {count} times{" "}
+            </button>
+        </div>
+    );
+}
+export default HookCounterOne;
+```
+#### Usage
+1. To run useEffect on every render do not pass any dependency  
+<code>
+useEffect(()->{
+    // Example Code
+})</code>
+2. To run useEffect only once on the first render pass any empty array in the dependecy   
+<code>
+useEffect(()->{
+    // Example Code
+}, [] )</code>
+3. To run useEffect on change of a particular value. Pass the state and props in the dependency array  
+<code>
+useEffect(()->{
+    // Example Code
+}, [props, state] )
+</code>
