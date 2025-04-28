@@ -3,24 +3,23 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-// Load environment variables
 dotenv.config();
 
-// Initialize app
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/appointments', require('./routes/appointments'));
+app.use('/api/doctor', require('./routes/doctor'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/patient', require('./routes/patient'));
 
-
-// MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
-    // Start server only after DB connection
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
